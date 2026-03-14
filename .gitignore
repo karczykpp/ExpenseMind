@@ -15,6 +15,7 @@ test-uploads/
 
 ### Environment ###
 *.env
+application.yml
 application-local.yml
 
 ### Eclipse ###
