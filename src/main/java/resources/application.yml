@@ -1,23 +1,17 @@
 spring:
   datasource:
-    # Adres Twojej lokalnej bazy danych PostgreSQL (domyślny port to 5432)
-    url: jdbc:postgresql://localhost:5432/expensemind
-    # Zmień na swój login do bazy (często domyślny to 'postgres')
-    username: postgres
-    # Zmień na swoje hasło do bazy
-    password: twoje_haslo
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
 
   jpa:
-    # Ważne: to każe Hibernate automatycznie stworzyć tabele w bazie na podstawie naszych encji!
     hibernate:
       ddl-auto: update
-    # Wypisuje w konsoli zapytania SQL, co jest super pomocne przy nauce i debugowaniu
     show-sql: true
     properties:
       hibernate:
         format_sql: true
 
-  # Tymczasowo wyłączamy Flyway. Ponieważ używamy `ddl-auto: update`,
-  # Hibernate sam stworzy tabele. Flyway włączymy, gdy będziesz gotowy pisać ręczne skrypty SQL.
   flyway:
     enabled: false
