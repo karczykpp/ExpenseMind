@@ -17,6 +17,8 @@ test-uploads/
 *.env
 application.yml
 application-local.yml
+application.properties
+application-local.properties
 
 ### Eclipse ###
 .apt_generated
