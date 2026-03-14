@@ -10,5 +10,5 @@ import java.util.UUID;
 
 @Repository
 public interface DocumentRepository extends JpaRepository<Document, UUID> {
-    Optional<Document> findByIdAndUserId(UUID documentId, UUID ownerId);
+    Optional<Document> findByIdAndOwnerId(UUID documentId, UUID ownerId);
 }

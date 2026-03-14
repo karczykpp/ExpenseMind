@@ -9,6 +9,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 public class ExpenseMindApplication {
 
     public static void main(String[] args) {
+        System.out.println("DEBUG: Sciezka robocza: " + System.getProperty("user.dir"));
         SpringApplication.run(ExpenseMindApplication.class, args);
     }
 }
