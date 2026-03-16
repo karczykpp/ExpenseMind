@@ -8,6 +8,8 @@ import pl.jakubkarcz.expensemind.domain.Expense;
 import pl.jakubkarcz.expensemind.infrastructure.repository.ExpenseRepository;
 import pl.jakubkarcz.expensemind.infrastructure.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ExpenseService {
@@ -38,5 +40,23 @@ public class ExpenseService {
                 savedExpense.getTotalAmount(),
                 savedExpense.getDate()
         );
+    }
+
+    public List<ExpenseResponse> getUserExpenses(String userEmail) {
+        var user = userRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new IllegalArgumentException("Nie znaleziono użytkownika o email: " + userEmail));
+
+        var expenses = expenseRepository.findAllByOwner(user);
+
+        return expenses.stream()
+                .map(expense -> new ExpenseResponse(
+                        expense.getId(),
+                        expense.getMerchant(),
+                        expense.getCategory(),
+                        expense.getCurrency(),
+                        expense.getTotalAmount(),
+                        expense.getDate()
+                ))
+                .toList();
     }
 }
