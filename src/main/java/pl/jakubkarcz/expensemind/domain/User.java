@@ -28,4 +28,7 @@ public class User {
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;
+
+    @Column(name = "monthly_budget")
+    private Double monthlyBudget;
 }

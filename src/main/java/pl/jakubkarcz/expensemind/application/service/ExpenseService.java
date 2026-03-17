@@ -27,6 +27,7 @@ public class ExpenseService {
         expense.setCurrency(request.currency());
         expense.setTotalAmount(request.totalAmount());
         expense.setDate(request.date());
+        expense.setType(request.type());
 
         expense.setOwner(user);
 
@@ -38,7 +39,8 @@ public class ExpenseService {
                 savedExpense.getCategory(),
                 savedExpense.getCurrency(),
                 savedExpense.getTotalAmount(),
-                savedExpense.getDate()
+                savedExpense.getDate(),
+                savedExpense.getType()
         );
     }
 
@@ -55,7 +57,8 @@ public class ExpenseService {
                         expense.getCategory(),
                         expense.getCurrency(),
                         expense.getTotalAmount(),
-                        expense.getDate()
+                        expense.getDate(),
+                        expense.getType()
                 ))
                 .toList();
     }

@@ -10,6 +10,7 @@ public record ExpenseResponse (
         String category,
         String currency,
         BigDecimal totalAmount,
-        LocalDate date
+        LocalDate date,
+        String type
 ) {
 }

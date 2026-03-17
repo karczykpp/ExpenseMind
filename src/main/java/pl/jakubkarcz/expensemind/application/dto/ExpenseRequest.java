@@ -8,6 +8,7 @@ public record ExpenseRequest(
         BigDecimal totalAmount,
         String currency,
         String category,
-        LocalDate date
+        LocalDate date,
+        String type
 ) {
 }

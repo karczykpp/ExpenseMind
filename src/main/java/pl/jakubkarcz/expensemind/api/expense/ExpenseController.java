@@ -8,9 +8,11 @@ import pl.jakubkarcz.expensemind.application.dto.ExpenseRequest;
 import pl.jakubkarcz.expensemind.application.dto.ExpenseResponse;
 import pl.jakubkarcz.expensemind.application.service.ExpenseService;
 import pl.jakubkarcz.expensemind.application.service.ReceiptOcrService;
+import pl.jakubkarcz.expensemind.infrastructure.repository.ExpenseRepository;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/expenses")
@@ -18,6 +20,7 @@ import java.util.List;
 public class ExpenseController {
     private final ExpenseService expenseService;
     private final ReceiptOcrService receiptOcrService;
+    private final ExpenseRepository expenseRepository;
 
     @PostMapping("/addExpense")
     public ResponseEntity<ExpenseResponse> addExpense(@RequestBody ExpenseRequest request, Principal principal) {
@@ -42,6 +45,12 @@ public class ExpenseController {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
         }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteExpense(@PathVariable UUID id, Principal principal) {
+        expenseRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 
 

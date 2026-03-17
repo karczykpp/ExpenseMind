@@ -23,6 +23,7 @@ public class Expense {
 
     private String merchant;
     private BigDecimal totalAmount;
+    private String type;
     private String currency;
     private String category;
     private String description;
